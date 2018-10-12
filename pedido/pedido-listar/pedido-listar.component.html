@@ -1,0 +1,7 @@
+<app-menu-admin></app-menu-admin>
+
+<app-table [pedidos]="pedidos" [local]="localId"
+  (status)="alterarStatus($event)" 
+  (editar)="editarPedido($event)" 
+  (deletar)="deletarPedido($event)">  
+</app-table>  

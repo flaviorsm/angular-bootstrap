@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row" style="margin-top:60px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form role="form" [formGroup]="loginForm">
+        <fieldset>
+          <h2>Administração</h2>
+          <hr class="colorgraph">
+          <div class="form-group">
+            <input type="email" formControlName="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">            
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="password" name="password" id="password" class="form-control input-lg" placeholder="Password">            
+            <label class="error">{{ errorMessage }}</label>
+          </div>
+          <hr class="colorgraph">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <input type="submit" (click)="login(loginForm.value)" class="btn btn-lg btn-success btn-block" value="Entrar">
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <div class="col-md-6">
+<h1 class="header">Administração</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" class="form-control" formControlName="password">
+          <label class="error">{{ errorMessage }}</label>
+        </div>
+        <button type="submit" (click)="login(loginForm.value)" class="btn btn-default">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div> -->

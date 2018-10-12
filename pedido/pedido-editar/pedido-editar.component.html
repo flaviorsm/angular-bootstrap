@@ -1,0 +1,66 @@
+<app-menu-admin></app-menu-admin>
+
+<main class="container">
+    <h2>{{ titulo }} Cliente</h2>
+    <hr />
+    <h5>Código: {{ codigoPedido }}</h5>
+    <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit(pedidoForm.value)">
+        <hr />
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="tel">Telefone:</label>
+                <input type="tel" placeholder="00000-0000" class="form-control" name="telefone" id="telefone"
+                    formControlName="telefone" [(ngModel)]="cliente.telefone" mask="00000-0000" />
+                <div *ngIf="pedidoForm.controls['telefone'].touched && pedidoForm.controls['telefone'].errors" class="alert alert-danger">
+                    Telefone inválido
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="tel">E-mail:</label>
+                <input type="email" placeholder="Colocar e-mail" class="form-control" name="email" id="email"
+                    formControlName="email" [(ngModel)]="cliente.email" />
+                <div *ngIf="pedidoForm.controls['email'].touched && pedidoForm.controls['email'].errors" class="alert alert-danger">
+                    E-mail inválido
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="name">Nome:</label>
+                <input type="text" placeholder="Nome" class="form-control" name="nome" id="nome" formControlName="nome"
+                    [(ngModel)]="cliente.nome" />
+                <div *ngIf="pedidoForm.controls['nome'].touched && pedidoForm.controls['nome'].errors" class="alert alert-danger">
+                    Nome obrigatório
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="endereco">Endereço:</label>
+                <input type="text" placeholder="Endereço" class="form-control" name="endereco" id="endereco"
+                    formControlName="endereco" [(ngModel)]="cliente.endereco" />
+                <div *ngIf="pedidoForm.controls['endereco'].touched && pedidoForm.controls['endereco'].errors" class="alert alert-danger">
+                    Endereço obrigatório
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="form-check form-check-inline" *ngFor="let preco of precos">
+                    <input class="form-check-input" type="radio" name="valor" id="inlineRadio1" [value]="preco.id"
+                        formControlName="valor" [(ngModel)]="pedido.precoId">
+                    <label class="form-check-label" for="inlineRadio1">{{ preco.tamanho }}: R$ {{ preco.preco | number: '1.2-2' }}</label>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="pedido">Pedido:</label>
+                <textarea rows="5" cols="100" placeholder="Pedido" class="form-control" name="descricao" id="descricao"
+                    formControlName="descricao" [(ngModel)]="pedido.descricao"></textarea>
+            </div>
+        </div>
+
+        <div id="actions" class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" [disabled]="!pedidoForm.valid">Salvar</button>
+                <a href="/pedido-listar" class="btn btn-default">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</main>

@@ -1,0 +1,33 @@
+<app-menu-admin></app-menu-admin>
+
+<main class="container">
+  <h2>{{ titulo }}</h2>
+
+  <form [formGroup]="cardapioForm" (ngSubmit)="onSubmit(cardapioForm.value)">
+    <!-- area de campos do form -->
+    <hr />
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label class="checkbox-inline">
+              <input type="checkbox" name="ativo" id="ativo" formControlName="ativo" [(ngModel)]="cardapio.ativo" />Ativo
+            </label>
+          </div>
+      <div class="form-group col-md-12">
+        <label for="name">Nome:</label>
+        <input type="text" placeholder="Nome" name="nome" class="form-control" id="nome" formControlName="nome"
+          [(ngModel)]="cardapio.nome" />
+      </div>
+      <div class="form-group col-md-12">
+        <label for="ingrediente">Ingredientes:</label>
+        <textarea rows="10" cols="100" placeholder="ingredientes" name="ingredientes" class="form-control" id="ingredientes"
+          required formControlName="ingredientes" [(ngModel)]="cardapio.ingredientes"></textarea>
+      </div>           
+    </div>
+    <div id="actions" class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!cardapioForm.valid">Salvar</button>
+        <a href="/cardapio-listar" class="btn btn-default">Cancelar</a>
+      </div>
+    </div>
+  </form>
+</main>

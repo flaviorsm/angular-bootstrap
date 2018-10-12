@@ -1,0 +1,44 @@
+<app-menu-admin></app-menu-admin>
+
+<main class="container">
+  <header>
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Cardápio</h2>
+      </div>
+      <div class="col-sm-6 text-right h2">
+        <a class="btn btn-primary" href="/cardapio-editar"><i class="fa fa-plus"></i> Adicionar item</a>
+      </div>
+    </div>
+  </header>
+  <table class="table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th hidden>ID</th>
+        <th width="15%">Nome</th>
+        <th>Ingredientes</th>
+        <th>Ativo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itens">
+        <td hidden>{{ item.id }}</td>
+        <td>{{ item.nome }}</td>
+        <td>{{ item.ingredientes }}</td>
+        <td>{{ item.ativo ? 'Sim' : 'Não' }}</td>
+        <td class="actions text-right">
+          <button class="btn btn-sm btn-warning" (click)="editarItem(item)">
+            <i class="fa fa-pencil"></i> Editar
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deletarItem(item)">
+            <i class="fa fa-trash"></i> Excluir
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="itens.length == 0">
+        <td colspan="6">Nenhum registro encontrado.</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
